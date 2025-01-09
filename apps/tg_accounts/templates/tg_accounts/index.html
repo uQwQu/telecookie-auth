@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .user-info strong {
+            color: #2c3e50;
+        }
+        .cta {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if user.is_authenticated %}
+                <h2>Profile Information</h2>
+                    <div class="user-info">
+                        <p><strong>You are logged in as:</strong> {{ user.first_name }}
+                            {% if user.last_name %}{{ user.last_name }}{% endif %}</p>
+                        {% if user.username %}
+                        <p><strong>Username:</strong> {{ user.username }}</p>
+                        {% endif %}
+                        {% if user.email %}
+                            <p><strong>Email:</strong> {{ user.email }}</p>
+                        {% endif %}
+                    </div>
+            {% if user.profile.tg %}
+                <h2>Telegram Account Information</h2>
+                <div class="user-info">
+                    <p><strong>You are logged in as:</strong> {{ user.profile.tg.first_name }}
+                        {% if user.profile.tg.last_name %}{{ user.profile.tg.last_name }}{% endif %}</p>
+                    {% if user.profile.tg.username %}
+                    <p><strong>Username:</strong> {{ user.profile.tg.username }}</p>
+                    {% endif %}
+                    <p><strong>Telegram ID:</strong> {{ user.profile.tg.telegram_id }}</p>
+                </div>
+            {% else %}
+                <p>You do not have a linked Telegram account. <a href="{% url 'telegram_linking' %}" style="text-decoration: none;">Link your Telegram account now!</a></p>
+            {% endif %}
+                <p><a href="{% url 'logout' %}" style="text-decoration: none;">Log out</a></p>
+        {% else %}
+            <h2>You are not logged in</h2>
+            <p>Please <a href="{% url 'telegram_signup' %}" style="text-decoration: none;">sign up</a> via Telegram to continue.</p>
+            <p class="cta">Alternatively, create a superuser using the command “<code>python3 manage.py createsuperuser</code>” and link your Telegram account to it.</p>
+            <p>Already have an account? <a href="https://t.me/{{ TELEGRAM_BOT_USERNAME }}?start=login">Log in</a> here.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
