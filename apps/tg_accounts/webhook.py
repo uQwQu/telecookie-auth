@@ -65,7 +65,7 @@ def linking_signup(telegram_account, chat, request):
             username=username,
             first_name=chat.get("first_name"),
             last_name=chat.get("last_name", ""),
-            email="",
+            email=f"{chat.get("id")}@fake.email",
         )
         telegram_account.profile = user.profile
         telegram_account.profile.user = user
