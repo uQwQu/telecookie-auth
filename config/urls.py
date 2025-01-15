@@ -23,5 +23,6 @@ from apps.tg_accounts import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index, name="index"),
+    path("users/", include("apps.users.urls")),
     path("telegram/", include("apps.tg_accounts.urls")),
 ]
