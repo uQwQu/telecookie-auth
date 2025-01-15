@@ -50,12 +50,8 @@
                     <div class="user-info">
                         <p><strong>You are logged in as:</strong> {{ user.first_name }}
                             {% if user.last_name %}{{ user.last_name }}{% endif %}</p>
-                        {% if user.username %}
                         <p><strong>Username:</strong> {{ user.username }}</p>
-                        {% endif %}
-                        {% if user.email %}
-                            <p><strong>Email:</strong> {{ user.email }}</p>
-                        {% endif %}
+                        <p><strong>Email:</strong> {{ user.email }}</p>
                     </div>
             {% if user.profile.tg %}
                 <h2>Telegram Account Information</h2>
