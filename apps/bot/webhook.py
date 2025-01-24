@@ -35,8 +35,7 @@ def telegram_webhook(request):
         update = Update.de_json(update_data, bot)
 
         session_id = text.split(" ")[1] if " " in text else ""
-        if session_id:
-            user = get_user_from_session(session_id)
+        if session_id and (user := get_user_from_session(session_id)):
             link_command(update, user.id)
 
         dispatcher.process_update(update)

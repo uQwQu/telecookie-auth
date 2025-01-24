@@ -37,7 +37,11 @@ def unidentified_command(update, context):
 
 
 def logout_command(update, context):
-    logout(update)
+    telegram_id = update.effective_user.id
+    if not profile_with_telegram(telegram_id):
+        update.message.reply_text("You are unauthorized")
+    else:
+        logout(update, profile_with_telegram(telegram_id))
 
 
 def link_command(update, user_id):

@@ -18,10 +18,8 @@ def login(profile_exists, update):
     return respond(telegram_account, update)
 
 
-def logout(update):
-    active_sessions = get_active_sessions(
-        profile_with_telegram(update.effective_user.id)
-    )
+def logout(update, profile):
+    active_sessions = get_active_sessions(profile)
     if active_sessions:
         for session_id in active_sessions:
             redis_client.delete(f":1:django.contrib.sessions.cache{session_id}")
