@@ -11,7 +11,7 @@ from apps.tg_accounts.models import TgAccount
 from config.settings import DOMAIN
 
 
-def respond(telegram_account, update):
+def respond(update, telegram_account):
     if (
         telegram_account.temporary_token
         and telegram_account.temporary_token_expiration >= now()

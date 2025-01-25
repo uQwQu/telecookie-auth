@@ -38,9 +38,9 @@ def get_user_from_session(session_id):
     session_data = redis_client.get(f":1:django.contrib.sessions.cache{session_id}")
     if session_data:
         session = pickle.loads(session_data)
-        user_id = session.get("_auth_user_id")
-        if user_id:
-            return User.objects.filter(pkid=user_id).first()
+        auth_user_id = session.get("_auth_user_id")
+        if auth_user_id:
+            return User.objects.filter(pkid=auth_user_id).first()
 
 
 def get_active_sessions(profile):

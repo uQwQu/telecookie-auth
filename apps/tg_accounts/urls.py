@@ -1,7 +1,7 @@
 from django.urls import path
 
-from apps.bot.services import activate_session
-from apps.bot.webhook import telegram_webhook
+from apps.tg_accounts.bot.services import activate_session
+from apps.tg_accounts.bot.webhook import telegram_webhook
 
 from . import views
 

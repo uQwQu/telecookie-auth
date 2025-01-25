@@ -4,18 +4,18 @@ import pytz
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
 
-from apps.bot.helpers import profile_with_telegram, sync_data
-from apps.bot.redis_client import get_active_sessions, get_sessions_data, redis_client
-from apps.bot.services import respond
+from apps.tg_accounts.bot.helpers import sync_data
+from apps.tg_accounts.bot.redis_client import get_active_sessions, get_sessions_data, redis_client
+from apps.tg_accounts.bot.services import respond
 from apps.tg_accounts.models import TgAccount
 
 User = get_user_model()
 
 
-def login(profile_exists, update):
+def login(update, profile_exists):
     telegram_account = TgAccount.objects.get(profile=profile_exists)
     sync_data(telegram_account, update)
-    return respond(telegram_account, update)
+    return respond(update, telegram_account)
 
 
 def logout(update, profile):

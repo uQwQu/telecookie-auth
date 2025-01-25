@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+#TODO: add custom auth with djoser and simplejwt
 from pathlib import Path
 
 import environ
@@ -47,7 +47,6 @@ LOCAL_APPS = [
     "apps.users",
     "apps.profiles",
     "apps.tg_accounts",
-    "apps.bot",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -60,7 +59,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "apps.bot.middleware.SessionCreationTimeMiddleware",
+    "apps.tg_accounts.bot.middleware.SessionCreationTimeMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"

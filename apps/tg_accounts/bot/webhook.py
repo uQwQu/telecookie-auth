@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from telegram import Bot, BotCommand, Update
 from telegram.ext import CommandHandler, Dispatcher, Filters, MessageHandler
 
-from apps.bot.commands import (
+from apps.tg_accounts.bot.commands import (
     authenticate_command,
     link_command,
     logout_command,
@@ -16,7 +16,7 @@ from apps.bot.commands import (
     start_command,
     unidentified_command,
 )
-from apps.bot.redis_client import get_user_from_session
+from apps.tg_accounts.bot.redis_client import get_user_from_session
 from config.settings import DOMAIN, TELEGRAM_BOT_TOKEN
 
 User = get_user_model()
