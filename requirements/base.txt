@@ -1,0 +1,12 @@
+django==4.2.18
+djoser
+djangorestframework
+django-redis==5.4.0
+redis==5.2.1
+celery==5.3.6
+flower==2.0.1
+psycopg2-binary
+pytz
+drf-spectacular==0.27.2
+django-celery-email
+urllib3<2

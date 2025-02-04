@@ -5,11 +5,9 @@ Django website template with Telegram and cookie-based authentication
 
 <img src="https://imgbb.io/ib/H2hZkU9BN9rK4G1_1737801501.jpg" width="250" style="border-radius: 25px;"/>
 
-## Built With
+## Technologies used:
 
-- Django
-- Docker
-- Redis
+Django, Django REST framework | Docker | Redis | Celery | Nginx
 
 ## How to run: 
 
@@ -22,7 +20,7 @@ Django website template with Telegram and cookie-based authentication
 2. Start ngrok (or smth like that) to tunnel your local server  
   
 ```bash  
-  ngrok http 8000  
+  ngrok http 8080  
 ```  
   
 3. Create .env file based on .env.example  
@@ -42,6 +40,5 @@ Django website template with Telegram and cookie-based authentication
 ```bash
   make build  
 ``` 
-
 <img src="https://imgbb.io/ib/Dyk69MWmUnxzzix_1737801501.jpg" width="650"/>
 <img src="https://imgbb.io/ib/bdCRCoEwQW1JL1a_1737801503.jpg" width="650"/>
